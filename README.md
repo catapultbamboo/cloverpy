@@ -1,6 +1,6 @@
 # cloverpy
 
-convert coverage report to clover using only standlib
+convert coverage report to clover using only stdlib
 
 ## Installation
 
