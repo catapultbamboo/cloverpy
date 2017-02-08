@@ -6,7 +6,7 @@ template = """\
 <?xml version="1.0"?>
 <coverage generated="{timestamp}" clover="3.3">
     <project timestamp="{timestamp}">
-        <metrics packages="1" files="{files}" classes="{files}" complexity="0" loc="{loc}" ncloc="{loc}"  elements="{loc}" statements="{loc}" coveredelements="{elements}" coveredstatements="{elements}" coveredconditionals="0" conditionals="0" methods="0" coveredmethods="0"/>
+        <metrics packages="{packages}" files="{files}" classes="{files}" complexity="0" loc="{loc}" ncloc="{loc}"  elements="{loc}" statements="{loc}" coveredelements="{elements}" coveredstatements="{elements}" coveredconditionals="0" conditionals="0" methods="0" coveredmethods="0"/>
     </project>
 </coverage>"""
 
@@ -15,7 +15,7 @@ def convert(coverage_xml):
     tree = ET.parse(coverage_xml).getroot()
     root = tree
     timestamp = root.attrib.get('timestamp')
-    
+
     """
     Dictionary in the format
     {
@@ -60,11 +60,12 @@ def convert(coverage_xml):
                 hit_loc += 1
 
     class_file_count = len(class_files)
+    package_count = len(root.findall('.//package'))
 
     return template.format(**{
         'timestamp': timestamp,
-        'files': class_file_count, 'loc': total_loc,
-        'elements': hit_loc})
+        'files': class_file_count, 'packages': package_count,
+        'loc': total_loc, 'elements': hit_loc})
 
 
 def argument_parser():
