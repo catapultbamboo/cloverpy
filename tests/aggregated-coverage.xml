@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<coverage line-rate="0.6113636363636364">
+	<packages>
+		<package line-rate="0.6060606060606061" name="data_in">
+			<classes>
+				<class filename="file_read.py" line-rate="0.5454545454545455" name="file_read">
+					<lines>
+						<line hits="1" number="3"/>
+						<line hits="1" number="5"/>
+						<line hits="1" number="6"/>
+						<line hits="0" number="8"/>
+						<line hits="0" number="11"/>
+						<line hits="0" number="15"/>
+						<line hits="1" number="19"/>
+						<line hits="1" number="21"/>
+						<line hits="1" number="22"/>
+						<line hits="0" number="23"/>
+						<line hits="0" number="24"/>
+					</lines>
+				</class>
+				<class filename="utility.py" line-rate="0.6666666666666667" name="utility">
+					<lines>
+						<line hits="1" number="3"/>
+						<line hits="1" number="6"/>
+						<line hits="1" number="7"/>
+						<line hits="0" number="10"/>
+						<line hits="0" number="15"/>
+						<line hits="1" number="22"/>
+					</lines>
+				</class>
+      </classes>
+    </package>
+    <package line-rate="0.6166666666666667" name="data_out">
+      <classes>
+				<class filename="serialize.py" line-rate="0.7333333333333333" name="serialize">
+					<lines>
+						<line hits="1" number="3"/>
+						<line hits="1" number="5"/>
+						<line hits="1" number="6"/>
+						<line hits="1" number="8"/>
+						<line hits="1" number="11"/>
+						<line hits="1" number="15"/>
+						<line hits="1" number="19"/>
+						<line hits="1" number="21"/>
+						<line hits="1" number="22"/>
+						<line hits="0" number="23"/>
+						<line hits="0" number="24"/>
+						<line hits="0" number="25"/>
+						<line hits="0" number="27"/>
+						<line hits="1" number="28"/>
+						<line hits="1" number="30"/>
+					</lines>
+				</class>
+				<class filename="utility.py" line-rate="0.5" name="utility">
+					<lines>
+						<line hits="0" number="3"/>
+						<line hits="0" number="6"/>
+						<line hits="0" number="7"/>
+						<line hits="1" number="10"/>
+						<line hits="1" number="15"/>
+						<line hits="1" number="22"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+	</packages>
+</coverage>
