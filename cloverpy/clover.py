@@ -30,34 +30,23 @@ def convert(coverage_xml):
     for class_file in root.findall('.//class'):
         filename = class_file.get('name')
 
-        # Initialize class names that haven't been seen before
-        if not filename in class_files:
-            class_files[filename] = {}
-
-        # Store the class loc coverage dict
-        class_coverage = class_files[filename];
+        # Initialize new class names to {}, then return the dict for the class
+        class_coverage = class_files.setdefault(filename, {});
 
         # Iterate over all lines of code for this instance of the class in the XML
         for loc in class_file.findall('.//line'):
             line_number = loc.get('number')
 
-            # Initialize lines in the code that haven't been seen before as not hit
-            if not line_number in class_coverage:
-                class_coverage[line_number] = False
-
-            # If the line has been hit, mark it as such
-            if loc.get('hits') != '0':
-                class_coverage[line_number] = True
+            # Initialize loc as not hit, and mark them as hit if they were hit at least once
+            line_hit = class_coverage.setdefault(line_number, False)
+            class_coverage[line_number] = line_hit or loc.get('hits') != '0'
 
     # Count the unique lines of code and the number of hit lines of code
     hit_loc = 0
     total_loc = 0
-    for class_file in class_files.keys():
-        for loc in class_files[class_file].keys():
-            total_loc += 1
-
-            if class_files[class_file][loc]:
-                hit_loc += 1
+    for class_coverage in class_files.values():
+        total_loc += len(class_coverage)
+        hit_loc += len([loc_hit for loc_hit in class_coverage.values() if loc_hit])
 
     class_file_count = len(class_files)
     package_count = len(root.findall('.//package'))
